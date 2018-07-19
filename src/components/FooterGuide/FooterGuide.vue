@@ -48,6 +48,7 @@
   left:0;
   background-color: #fafafa;
   border-top:1px solid #d9d9d9;
+  z-index:5;
   &>.item{
     width:72/@rem;
     height:70.97/@rem;
