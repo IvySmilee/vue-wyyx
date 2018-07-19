@@ -1,23 +1,26 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <FooterGuide v-show="$route.meta.isShow"/>
     <router-view/>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+  import FooterGuide from './components/FooterGuide/FooterGuide.vue'
+
+
+  export default {
+    components:{
+      FooterGuide
+    }
+  }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped lang="less" rel="stylesheet/less">
+@rem:750/10rem;
+  #app{
+    font-size:28/@rem;
+    width:100%;
+    height:100%;
+  }
 </style>

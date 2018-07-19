@@ -3,10 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/reset.css">
     <title>wyyx</title>
   </head>
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <script>
+    (function(){
+      var width = document.documentElement.clientWidth;
+      //创建style
+      var styleNode = document.createElement('style');
+      styleNode.innerHTML = 'html{font-size: '+ width/10 +'px !important;}';
+      document.head.appendChild(styleNode);
+    })();
+  </script>
 </html>
