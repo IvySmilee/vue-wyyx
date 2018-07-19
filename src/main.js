@@ -3,12 +3,13 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import store from './store'
 
-
+import './mock/mockServer' //只需要引入即可
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   render:h=>h(App),
-  router,
-
+  router,//注册路由器
+  store //注册store
 });

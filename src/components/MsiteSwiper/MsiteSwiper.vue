@@ -1,11 +1,11 @@
 <template>
   <div class="swiper_wrap">
     <div class="swiper-container m-swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="./images/01.jpg"/>
+        <div class="swiper-wrapper" >
+          <div class="swiper-slide" v-for="(obj,index) in swiperList" :key="index">
+            <img :src="obj.picUrl" alt="a"/>
           </div>
-          <div class="swiper-slide">
+          <!--<div class="swiper-slide">
             <img src="./images/02.jpg"/>
           </div>
           <div class="swiper-slide">
@@ -25,7 +25,7 @@
           </div>
           <div class="swiper-slide">
             <img src="./images/08.jpg"/>
-          </div>
+          </div>-->
         </div>
         <!-- 如果需要分页器 -->
         <div class="swiper-pagination m-swiper-pagination" ></div>
@@ -56,19 +56,30 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   import Swiper from 'swiper'
   import 'swiper/dist/css/swiper.min.css'
   
   export default {
     mounted(){
-      new Swiper ('.swiper-container', {
-        //direction: 'vertical',
-        loop: true,
-        // 如果需要分页器
-        pagination: {
-          el: '.swiper-pagination',
-        }
-      })
+      this.$store.dispatch('getSwiper');
+    },
+    computed:{
+      ...mapState(['swiperList'])
+    },
+    watch:{
+      //深度监视数据变化
+      swiperList(){
+        this.$nextTick(()=>{
+          new Swiper ('.swiper-container', {
+            //direction: 'vertical',
+            loop: true,
+            pagination: { // 如果需要分页器
+              el: '.swiper-pagination',
+            }
+          })
+        })
+      }
     }
   }
 </script>
@@ -80,8 +91,8 @@
 /*轮播图区*/
 .swiper_wrap{
   width:100%;
-  margin-top: 148/@rem;
-  margin-bottom: .26667rem;
+  margin-top:130/@rem;
+  //margin-bottom: .26667rem;
   .swiper-container{
     width:750/@rem;
     height:400/@rem;

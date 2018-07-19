@@ -4,22 +4,33 @@
     <MsiteHeader/>
     <!--轮播图区-->
     <MsiteSwiper/>
+    <!--品牌直供区-->
+    <MsiteBrandServe/>
+    <!--新品首发区-->
+    <MsiteNewGoods/>
+    <MsiteNewGoods/>
+    <MsiteNewGoods/>
+    <MsiteNewGoods/>
+    <MsiteNewGoods/>
+    
     
 	</div>
 </template>
 
 <script>
+  
+  
   import MsiteHeader from '../../components/MsiteHeader/MsiteHeader.vue'
   import MsiteSwiper from '../../components/MsiteSwiper/MsiteSwiper.vue'
+  import MsiteBrandServe from '../../components/MsiteBrandServe/MsiteBrandServe.vue'
+  import MsiteNewGoods from '../../components/MsiteNewGoods/MsiteNewGoods.vue'
 
   export default {
-    /*data：组件中data必须用函数的形式，返回的必须是对象*/
-    data() {
-      return {}
-    },
     components:{
       MsiteHeader,
-      MsiteSwiper
+      MsiteSwiper,
+      MsiteBrandServe,
+      MsiteNewGoods
     }
   }
 </script>
@@ -29,8 +40,18 @@
 <style scoped lang="less" rel="stylesheet/less">
 @rem:750/10rem;
 #msite{
+  /*height:3000px;*/
   width:750/@rem;
   margin-right:auto;
   margin-left: auto;
+  /*.msite_header_item{
+    //height:148/@rem;
+  }
+  .msite_item{
+    width:100%;
+    margin-bottom: .26667rem;
+    background-color: #fff;
+    overflow: hidden;
+  }*/
 }
 </style>
