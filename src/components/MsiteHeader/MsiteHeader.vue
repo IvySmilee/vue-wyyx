@@ -1,8 +1,8 @@
 <template>
-  <div class="head_wrap">
+  <div class="m_head_wrap">
     <!--搜索区-->
     <div class="head_top">
-      <a class="logo" href="/msite"></a>
+      <a class="logo" href="javascripe:;"></a>
       <div class="search">
         <i></i>
         <span>搜索商品, 共10726款好物</span>
@@ -15,10 +15,11 @@
         <li class="first">
           <span class="active">推荐</span>
         </li>
-        <li>
-          <span>居家</span>
+        <li v-for="(tag,index) in navTagList" :key="index">
+          <span>{{tag.name}}</span>
         </li>
-        <li>
+       
+        <!--<li>
           <span>鞋包配饰</span>
         </li>
         <li>
@@ -44,20 +45,25 @@
         </li>
         <li>
           <span>特色区</span>
-        </li>
+        </li>-->
       </ul>
     </div>
   </div>
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   import BScroll from 'better-scroll'
   export default {
     mounted(){
+      this.$store.dispatch('getNavTags');
       new BScroll(".head_nav",{
         scrollX:true,
         click:true
       })
+    },
+    computed:{
+      ...mapState(['navTagList'])
     }
   }
 </script>
@@ -66,7 +72,7 @@
 <style scoped lang="less" rel="stylesheet/less">
 @rem:750/10rem;
 /*搜索区*/
-.head_wrap{
+.m_head_wrap{
   width:100%;
   position: fixed;
   top: 0;

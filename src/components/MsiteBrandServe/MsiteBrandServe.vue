@@ -1,41 +1,19 @@
 <template>
-	<div class="brand_serve">
+	<div class="m_brand_serve">
     <header class="big_title">
-      <a class="more" href="#">
+      <a class="more" href="javascript:;">
         <span>品牌制造商直供</span>
         <i></i>
       </a>
     </header>
     <div class="brand_container">
       <ul class="brand_list">
-        <li class="brand_item">
+        <li class="brand_item" v-for="(obj, index) in brandServeList" :key="index">
           <div class="item_info">
-            <p class="item_title">CK制造商</p>
-            <span class="item_price"><span>25</span>元起</span>
+            <p class="item_title">{{obj.name}}</p>
+            <span class="item_price"><span>{{obj.floorPrice}}</span>元起</span>
           </div>
-          <img class="item_img" src="./images/brand/01.png"/>
-        </li>
-        <li class="brand_item">
-          <div class="item_info">
-            <p class="item_title">Kenneth Cole制造商</p>
-            <span class="item_price"><span>219</span>元起</span>
-          </div>
-          <img class="item_img" src="./images/brand/02.png"/>
-        </li>
-        <li class="brand_item">
-          <div class="item_info">
-            <p class="item_title">Ralph Lauren制造商</p>
-            <span class="item_price"><span>19</span>元起</span>
-          </div>
-          <img class="item_img" src="./images/brand/03.png"/>
-        </li>
-        <li class="brand_item">
-          <div class="item_info">
-            <p class="item_title">海外制造商</p>
-            <span class="item_price"><span>9.9</span>元起</span>
-            <span class="icon">上新</span>
-          </div>
-          <img class="item_img" src="./images/brand/04.png"/>
+          <img class="item_img" :src="obj.picUrl"/>
         </li>
       </ul>
     </div>
@@ -43,10 +21,14 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
-    /*data：组件中data必须用函数的形式，返回的必须是对象*/
-    data() {
-      return {}
+    mounted(){
+      this.$store.dispatch('getBransServe')
+    },
+    computed:{
+      ...mapState(['brandServeList'])
+      
     }
   }
 </script>
@@ -54,7 +36,7 @@
 <!--scoped：限定范围，只在当前组件中应用样式-->
 <style scoped lang="less" rel="stylesheet/less">
 @rem:750/10rem;
-.brand_serve{
+.m_brand_serve{
   width:100%;
   .big_title{
     height:110/@rem;

@@ -38,14 +38,14 @@
   top:0;
   bottom:0;
   .initLayer_top{
-    width:100%;
+    width:750/@rem;
     margin:0 auto;
     &>img{
-      width:100%;
+      width:750/@rem;
     }
   }
   .initLayer_bottom{
-    width:100%;
+    width:750/@rem;
     margin:0 auto;
     position: relative;
     &>img{

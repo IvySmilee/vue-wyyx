@@ -1,19 +1,25 @@
 <template>
 	<div id="msite">
     <!--搜索区-->
-    <MsiteHeader/>
+    <MsiteHeader class="msite_header_item"/>
     <!--轮播图区-->
-    <MsiteSwiper/>
+    <MsiteSwiper class="msite_item"/>
     <!--品牌直供区-->
-    <MsiteBrandServe/>
+    <MsiteBrandServe class="msite_item"/>
     <!--新品首发区-->
-    <MsiteNewGoods/>
-    <MsiteNewGoods/>
-    <MsiteNewGoods/>
-    <MsiteNewGoods/>
-    <MsiteNewGoods/>
-    
-    
+    <MsiteNewGoods class="msite_item"/>
+    <!--好物精选-->
+    <MsiteBetterGoods class="msite_item"/>
+    <!--限时购-->
+    <MsiteLimitTime/>
+    <!--福利社-->
+    <MsiteWelfare class="msite_item"/>
+    <!--专题精选-->
+    <MsiteSpecialSelected class="msite_item"/>
+    <!--居家好物列表-->
+    <MsiteMainList class="msite_item"/>
+    <!--底部-->
+    <MsiteFooter/>
 	</div>
 </template>
 
@@ -24,13 +30,25 @@
   import MsiteSwiper from '../../components/MsiteSwiper/MsiteSwiper.vue'
   import MsiteBrandServe from '../../components/MsiteBrandServe/MsiteBrandServe.vue'
   import MsiteNewGoods from '../../components/MsiteNewGoods/MsiteNewGoods.vue'
+  import MsiteBetterGoods from '../../components/MsiteBetterGoods/MsiteBetterGoods.vue'
+  import MsiteLimitTime from '../../components/MsiteLimitTime/MsiteLimitTime.vue'
+  import MsiteWelfare from '../../components/MsiteWelfare/MsiteWelfare.vue'
+  import MsiteSpecialSelected from '../../components/MsiteSpecialSelected/MsiteSpecialSelected.vue'
+  import MsiteMainList from '../../components/MsiteMainList/MsiteMainList.vue'
+  import MsiteFooter from '../../components/MsiteFooter/MsiteFooter.vue'
 
   export default {
     components:{
       MsiteHeader,
       MsiteSwiper,
       MsiteBrandServe,
-      MsiteNewGoods
+      MsiteNewGoods,
+      MsiteBetterGoods,
+      MsiteLimitTime,
+      MsiteWelfare,
+      MsiteSpecialSelected,
+      MsiteMainList,
+      MsiteFooter
     }
   }
 </script>
@@ -40,18 +58,17 @@
 <style scoped lang="less" rel="stylesheet/less">
 @rem:750/10rem;
 #msite{
-  /*height:3000px;*/
+  height:3000px;
   width:750/@rem;
   margin-right:auto;
   margin-left: auto;
-  /*.msite_header_item{
-    //height:148/@rem;
+  .msite_header_item{
+    height:148/@rem;
   }
   .msite_item{
     width:100%;
     margin-bottom: .26667rem;
     background-color: #fff;
-    overflow: hidden;
-  }*/
+  }
 }
 </style>

@@ -1,31 +1,10 @@
 <template>
-  <div class="swiper_wrap">
+  <div class="m_swiper_wrap">
     <div class="swiper-container m-swiper-container">
         <div class="swiper-wrapper" >
           <div class="swiper-slide" v-for="(obj,index) in swiperList" :key="index">
             <img :src="obj.picUrl" alt="a"/>
           </div>
-          <!--<div class="swiper-slide">
-            <img src="./images/02.jpg"/>
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/03.jpg"/>
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/04.jpg"/>
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/05.jpg"/>
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/06.jpg"/>
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/07.jpg"/>
-          </div>
-          <div class="swiper-slide">
-            <img src="./images/08.jpg"/>
-          </div>-->
         </div>
         <!-- 如果需要分页器 -->
         <div class="swiper-pagination m-swiper-pagination" ></div>
@@ -89,9 +68,9 @@
 <style scoped lang="less" rel="stylesheet/less">
 @rem:750/10rem;
 /*轮播图区*/
-.swiper_wrap{
+.m_swiper_wrap{
   width:100%;
-  margin-top:130/@rem;
+  margin-top:2rem;
   //margin-bottom: .26667rem;
   .swiper-container{
     width:750/@rem;
