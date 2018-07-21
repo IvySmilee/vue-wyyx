@@ -22,10 +22,13 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
-    /*data：组件中data必须用函数的形式，返回的必须是对象*/
-    data() {
-      return {}
+   mounted(){
+     this.$store.dispatch('getYXLook')
+   },
+    computed:{
+      ...mapState(['yxList'])
     }
   }
 </script>

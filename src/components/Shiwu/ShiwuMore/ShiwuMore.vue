@@ -4,13 +4,21 @@
       <div class="title">更多精彩</div>
     </div>
     <div class="m_content">
-      <a class="content_item" href="javascript:;">
-        <div class="img_wrap one_pic"></div>
-        <div class="desc">
-          聪明的生活家，必备这些好物
+      <a class="content_item" :href="item.linkUrl" v-for="(item,index) in moreList">
+        
+        <div class="img_wrap one_pic" v-if="item.picList.length===0"
+             :style="`background-image:url(${item.itemPicUrl})`"></div>
+        <div class="img_wrap three_img_wrap"  v-if="item.picList.length>0">
+          <div class="img_wrap pic1" :style="`background-image:url(${item.picList[0]})`"></div>
+          <div class="right">
+            <div class="img_wrap pic2" :style="`background-image:url(${item.picList[1]})`"></div>
+            <div class="img_wrap pic3" :style="`background-image:url(${item.picList[2]})`"></div>
+          </div>
         </div>
+        
+        <div class="desc">{{item.title}}</div>
       </a>
-      <a class="content_item" href="javascript:;">
+      <!--<a class="content_item" href="javascript:;">
         <div class="img_wrap three_img_wrap">
           <div class="img_wrap pic1"></div>
           <div class="right">
@@ -21,16 +29,19 @@
         <div class="desc">
           聪明的生活家，必备这些好物
         </div>
-      </a>
+      </a>-->
     </div>
 	</div>
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
-    /*data：组件中data必须用函数的形式，返回的必须是对象*/
-    data() {
-      return {}
+    mounted(){
+      this.$store.dispatch('getMoreList')
+    },
+    computed:{
+      ...mapState(['moreList'])
     }
   }
 </script>

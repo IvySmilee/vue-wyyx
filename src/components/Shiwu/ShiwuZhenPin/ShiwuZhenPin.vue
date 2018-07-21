@@ -1,21 +1,39 @@
 <template>
   <div class="s_zhenpin">
     <div class="z_header">严选甄品</div>
-    <a class="z_main_post" href="javascript:;">
-      <div class="post_wrap">
+    <a class="z_main_post" :href="zpList.zhenOne.schemeUrl" v-if="zpList.zhenOne">
+      <div class="post_wrap" :style="`background-image:url(${zpList.zhenOne.picUrl})`">
         <div class="name">
-          <div class="name_title">严选推荐</div>
+          <div class="name_title">{{zpList.zhenOne.nickname}}</div>
         </div>
       </div>
       <div class="post_info">
         <div class="title_price">
-          <span class="title">选择一种风格，选择一种人生</span>
-          <span class="price">9.6元起</span>
+          <span class="title">{{zpList.zhenOne.title}}</span>
+          <span class="price">{{zpList.zhenOne.priceInfo}}元起</span>
         </div>
-        <div class="subtitle">ins风、北欧风、复古风等数十款好物限时特价</div>
+        <div class="subtitle">{{zpList.zhenOne.subtitle}}</div>
       </div>
     </a>
-    <a class="z_item" href="javascript:;">
+    <a class="z_item" :href="obj.schemeUrl" v-if="zpList.zhenpins"
+       v-for="(obj,index) in zpList.zhenpins" :key="index">
+      <div class="r_item_left">
+        <div class="user">
+          <div class="avatar">
+            <img :src="obj.avatar" alt="">
+          </div>
+          <div class="name">{{obj.nickname}}</div>
+        </div>
+        <div class="title">{{obj.title}}</div>
+        <div class="subtitle">{{obj.subtitle}}</div>
+      </div>
+      <div class="r_item_right" :style="`background-image:url(${obj.picUrl})`">
+        <div class="topicTag">
+          <div class="tag">{{obj.typeName}}</div>
+        </div>
+      </div>
+    </a>
+    <!--<a class="z_item" href="javascript:;">
       <div class="r_item_left">
         <div class="user">
           <div class="avatar">
@@ -31,32 +49,18 @@
           <div class="tag">丁磊的好货推荐</div>
         </div>
       </div>
-    </a>
-    <a class="z_item" href="javascript:;">
-      <div class="r_item_left">
-        <div class="user">
-          <div class="avatar">
-            <img src="http://yanxuan.nosdn.127.net/2775332d3490abdb5bfe867c64d1c2e4.png?imageView&quality=75&thumbnail=48y48" alt="">
-          </div>
-          <div class="name">丁磊</div>
-        </div>
-        <div class="title">这款有机茶叶饮料，无糖不怕胖</div>
-        <div class="subtitle">云萃龙井茶饮料限时69.8元一箱</div>
-      </div>
-      <div class="r_item_right">
-        <div class="topicTag">
-          <div class="tag">丁磊的好货推荐</div>
-        </div>
-      </div>
-    </a>
+    </a>-->
   </div>
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
-    /*data：组件中data必须用函数的形式，返回的必须是对象*/
-    data() {
-      return {}
+    mounted(){
+      this.$store.dispatch('getZPList')
+    },
+    computed:{
+      ...mapState(['zpList'])
     }
   }
 </script>

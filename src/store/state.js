@@ -1,4 +1,5 @@
 export default {
+  //msite
   navTagList:[],//头部导航标签
   swiperList:[],//轮播图数组列表
   brandServeList:[],//品牌直供列表
@@ -7,4 +8,12 @@ export default {
   limitedGoodsObj:{},//限时购对象
   specialGoodsList:[],//专题精选
   mainList:[],//Msite主列表
+  //shiwu
+  bannerList:[],
+  slideList:[],
+  recommendList:{},
+  tfList:[],
+  zpList:[],
+  yxList:[],
+  moreList:[]
 }

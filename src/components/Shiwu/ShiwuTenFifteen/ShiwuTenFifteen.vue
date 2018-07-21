@@ -3,7 +3,26 @@
     <div class="tf_header">十点一刻</div>
     <div class="tf_slide_wrap">
       <div class="tf_slide">
-        <a class="slide_item" href="">
+        <a class="slide_item" :href="obj.url" v-for="(obj,index) in tfList">
+          <div class="line-title">— 今日话题 —</div>
+          <div class="title">{{obj.title}}</div>
+          <div class="desc">{{obj.desc}}</div>
+          <div class="joins">
+            <div class="inner">
+              <div class="avatars">
+                <img class="avatar" v-for="(avatar,index) in obj.participantAvatar" :key="index"
+                     :src="avatar" alt="">
+                <div class="avatar more">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="joined">{{obj.participantNum}}人参与话题</div>
+            </div>
+          </div>
+        </a>
+       <!-- <a class="slide_item" href="">
           <div class="line-title">— 今日话题 —</div>
           <div class="title">关于单身</div>
           <div class="desc">聊聊单身的好处</div>
@@ -22,67 +41,8 @@
               <div class="joined">550人参与话题</div>
             </div>
           </div>
-        </a>
-        <a class="slide_item" href="">
-          <div class="line-title">— 今日话题 —</div>
-          <div class="title">关于单身</div>
-          <div class="desc">聊聊单身的好处</div>
-          <div class="joins">
-            <div class="inner">
-              <div class="avatars">
-                <img class="avatar" src="http://nos.netease.com/yanxuan/8945ae63d940cc42406c3f67019c5cb6.png?imageView&thumbnail=48y48" alt="">
-                <img class="avatar" src="http://nos.netease.com/yanxuan/8945ae63d940cc42406c3f67019c5cb6.png?imageView&thumbnail=48y48" alt="">
-                <img class="avatar" src="http://nos.netease.com/yanxuan/8945ae63d940cc42406c3f67019c5cb6.png?imageView&thumbnail=48y48" alt="">
-                <div class="avatar more">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-              <div class="joined">550人参与话题</div>
-            </div>
-          </div>
-        </a>
-        <a class="slide_item" href="">
-          <div class="line-title">— 今日话题 —</div>
-          <div class="title">关于单身</div>
-          <div class="desc">聊聊单身的好处</div>
-          <div class="joins">
-            <div class="inner">
-              <div class="avatars">
-                <img class="avatar" src="http://nos.netease.com/yanxuan/8945ae63d940cc42406c3f67019c5cb6.png?imageView&thumbnail=48y48" alt="">
-                <img class="avatar" src="http://nos.netease.com/yanxuan/8945ae63d940cc42406c3f67019c5cb6.png?imageView&thumbnail=48y48" alt="">
-                <img class="avatar" src="http://nos.netease.com/yanxuan/8945ae63d940cc42406c3f67019c5cb6.png?imageView&thumbnail=48y48" alt="">
-                <div class="avatar more">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-              <div class="joined">550人参与话题</div>
-            </div>
-          </div>
-        </a>
-        <a class="slide_item" href="">
-          <div class="line-title">— 今日话题 —</div>
-          <div class="title">关于单身</div>
-          <div class="desc">聊聊单身的好处</div>
-          <div class="joins">
-            <div class="inner">
-              <div class="avatars">
-                <img class="avatar" src="http://nos.netease.com/yanxuan/8945ae63d940cc42406c3f67019c5cb6.png?imageView&thumbnail=48y48" alt="">
-                <img class="avatar" src="http://nos.netease.com/yanxuan/8945ae63d940cc42406c3f67019c5cb6.png?imageView&thumbnail=48y48" alt="">
-                <img class="avatar" src="http://nos.netease.com/yanxuan/8945ae63d940cc42406c3f67019c5cb6.png?imageView&thumbnail=48y48" alt="">
-                <div class="avatar more">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-              <div class="joined">550人参与话题</div>
-            </div>
-          </div>
-        </a>
+        </a>-->
+        
         <a class="slide_item" href="">
           <div class="for_more">
             <div class="check_more">查看全部话题</div>
@@ -96,20 +56,27 @@
 
 <script>
   import BScroll from 'better-scroll'
+  import {mapState} from 'vuex'
   export default {
-    /*data：组件中data必须用函数的形式，返回的必须是对象*/
-    data() {
-      return {}
-    },
+    
     mounted(){
-      this.$nextTick(()=>{
-        new BScroll('.tf_slide_wrap',{
-          scrollX:true,
-          click:true, //默认禁止点击的
-          probeType:2,//因为惯性滑动不会触发
-          eventPassthrough:'vertical',//解决横向滑动时，纵向不能滑屏的问题
+      this.$store.dispatch('getTFList');
+      
+    },
+    computed:{
+      ...mapState(['tfList'])
+    },
+    watch:{
+      tfList(){
+        this.$nextTick(()=>{
+          new BScroll('.tf_slide_wrap',{
+            scrollX:true,
+            click:true, //默认禁止点击的
+            probeType:2,//因为惯性滑动不会触发
+            eventPassthrough:'vertical',//解决横向滑动时，纵向不能滑屏的问题
+          })
         })
-      })
+      }
     }
   }
 </script>

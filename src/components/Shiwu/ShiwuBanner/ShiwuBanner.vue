@@ -3,38 +3,23 @@
       <div class="swiper">
         <div class="swiper-container s-swiper-container">
           <div class="swiper-wrapper s-swiper-wrapper" >
-            <a class="swiper-slide s-swiper-slide" href="javascript:;">
-              <img class="slide-bg" src="./images/01.jpg"/>
+            <a class="swiper-slide s-swiper-slide" href="javascript:;"
+              v-for="(obj,index) in bannerList" :key="index">
+              <img class="slide-bg" :src="obj.picUrl"/>
               <div class="slide-content">
-                <div class="name">--严选推荐--</div>
-                <div class="title">海边度假必看攻略</div>
-                <div class="info">不去海边浪一浪，夏天算白过了</div>
+                <div class="name">--{{obj.subTitle}}--</div>
+                <div class="title">{{obj.title}}</div>
+                <div class="info">{{obj.desc}}</div>
               </div>
             </a>
-            <a class="swiper-slide s-swiper-slide" href="javascript:;">
+           <!-- <a class="swiper-slide s-swiper-slide" href="javascript:;">
               <img class="slide-bg" src="./images/02.jpg"/>
               <div class="slide-content">
-                <div class="name">--严选推荐--</div>
+                <div class="name">&#45;&#45;严选推荐&#45;&#45;</div>
                 <div class="title">海边度假必看攻略</div>
                 <div class="info">不去海边浪一浪，夏天算白过了</div>
               </div>
-            </a>
-            <a class="swiper-slide s-swiper-slide" href="javascript:;">
-              <img class="slide-bg" src="./images/01.jpg"/>
-              <div class="slide-content">
-                <div class="name">--严选推荐--</div>
-                <div class="title">海边度假必看攻略</div>
-                <div class="info">不去海边浪一浪，夏天算白过了</div>
-              </div>
-            </a>
-            <a class="swiper-slide s-swiper-slide" href="javascript:;">
-              <img class="slide-bg" src="./images/02.jpg"/>
-              <div class="slide-content">
-                <div class="name">--严选推荐--</div>
-                <div class="title">海边度假必看攻略</div>
-                <div class="info">不去海边浪一浪，夏天算白过了</div>
-              </div>
-            </a>
+            </a>-->
           </div>
         </div>
       </div>
@@ -43,19 +28,23 @@
 
 <script>
   import Swiper from 'swiper'
+  import {mapState} from 'vuex'
   export default {
-    /*data：组件中data必须用函数的形式，返回的必须是对象*/
-    data() {
-      return {}
-    },
     mounted(){
-      this.$nextTick(()=>{
-        new Swiper ('.swiper-container', {
-          //direction: 'vertical',
-          loop: true,
-        })
-      });
-      
+      this.$store.dispatch('getBannerList');
+    },
+    computed:{
+      ...mapState(['bannerList'])
+    },
+    watch:{
+      bannerList(){
+        this.$nextTick(()=>{
+          new Swiper ('.swiper-container', {
+            //direction: 'vertical',
+            loop: true,
+          })
+        });
+      }
     }
   }
 </script>

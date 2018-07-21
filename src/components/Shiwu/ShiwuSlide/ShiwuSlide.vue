@@ -3,60 +3,19 @@
     
     <div class="s_slide-container">
       <div class="slide-wrapper" >
-        <a class="slide_item" href="javascript:;">
-          <div class="slide-bg"></div>
-          <div class="total-txt">328篇文章</div>
-          <div class="slide-txt">严选推荐</div>
+        <a class="slide_item" href="javascript:;"
+           v-for="(obj,index) in slideList" :key="index">
+          <div class="slide-bg" :style='`background-image:url(${obj.picUrl})`'></div>
+          <div class="total-txt">{{obj.articleCount}}</div>
+          <div class="slide-txt">{{obj.title}}</div>
         </a>
-        <a class="slide_item" href="javascript:;">
-          <div class="slide-bg"></div>
-          <div class="total-txt">328篇文章</div>
-          <div class="slide-txt">
-            严选推荐
-          </div>
-        </a>
-        <a class="slide_item" href="javascript:;">
+        <!--<a class="slide_item" href="javascript:;">
           <div class="slide-bg"></div>
           <div class="total-txt">328篇文章</div>
           <div class="slide-txt">
             严选推荐
           </div>
-        </a>
-        <a class="slide_item" href="javascript:;">
-          <div class="slide-bg"></div>
-          <div class="total-txt">328篇文章</div>
-          <div class="slide-txt">
-            严选推荐
-          </div>
-        </a>
-        <a class="slide_item" href="javascript:;">
-          <div class="slide-bg"></div>
-          <div class="total-txt">328篇文章</div>
-          <div class="slide-txt">
-            严选推荐
-          </div>
-        </a>
-        <a class="slide_item" href="javascript:;">
-          <div class="slide-bg"></div>
-          <div class="total-txt">328篇文章</div>
-          <div class="slide-txt">
-            严选推荐
-          </div>
-        </a>
-        <a class="slide_item" href="javascript:;">
-          <div class="slide-bg"></div>
-          <div class="total-txt">328篇文章</div>
-          <div class="slide-txt">
-            严选推荐
-          </div>
-        </a>
-        <a class="slide_item" href="javascript:;">
-          <div class="slide-bg"></div>
-          <div class="total-txt">328篇文章</div>
-          <div class="slide-txt">
-            严选推荐
-          </div>
-        </a>
+        </a>-->
       </div>
     </div>
   </div>
@@ -64,20 +23,31 @@
 
 <script>
   import BScroll from 'better-scroll'
+  import {mapState} from 'vuex'
+
   export default {
     /*data：组件中data必须用函数的形式，返回的必须是对象*/
     data() {
       return {}
     },
     mounted(){
-      this.$nextTick(()=>{
-        new BScroll('.s_slide-container',{
-          scrollX:true,
-          click:true, //默认禁止点击的
-          probeType:2,//因为惯性滑动不会触发
-          eventPassthrough:'vertical',//解决横向滑动时，纵向不能滑屏的问题
+      this.$store.dispatch('getSlideList');
+     
+    },
+    computed:{
+      ...mapState(['slideList'])
+    },
+    watch:{
+      slideList(){
+        this.$nextTick(()=>{
+          new BScroll('.s_slide-container',{
+            scrollX:true,
+            click:true, //默认禁止点击的
+            probeType:2,//因为惯性滑动不会触发
+            eventPassthrough:'vertical',//解决横向滑动时，纵向不能滑屏的问题
+          })
         })
-      })
+      }
     }
   }
 </script>
