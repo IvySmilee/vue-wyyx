@@ -26,16 +26,16 @@
 <script>
   
   
-  import MsiteHeader from '../../components/MsiteHeader/MsiteHeader.vue'
-  import MsiteSwiper from '../../components/MsiteSwiper/MsiteSwiper.vue'
-  import MsiteBrandServe from '../../components/MsiteBrandServe/MsiteBrandServe.vue'
-  import MsiteNewGoods from '../../components/MsiteNewGoods/MsiteNewGoods.vue'
-  import MsiteBetterGoods from '../../components/MsiteBetterGoods/MsiteBetterGoods.vue'
-  import MsiteLimitTime from '../../components/MsiteLimitTime/MsiteLimitTime.vue'
-  import MsiteWelfare from '../../components/MsiteWelfare/MsiteWelfare.vue'
-  import MsiteSpecialSelected from '../../components/MsiteSpecialSelected/MsiteSpecialSelected.vue'
-  import MsiteMainList from '../../components/MsiteMainList/MsiteMainList.vue'
-  import MsiteFooter from '../../components/MsiteFooter/MsiteFooter.vue'
+  import MsiteHeader from '../../components/Msite/MsiteHeader/MsiteHeader.vue'
+  import MsiteSwiper from '../../components/Msite/MsiteSwiper/MsiteSwiper.vue'
+  import MsiteBrandServe from '../../components/Msite/MsiteBrandServe/MsiteBrandServe.vue'
+  import MsiteNewGoods from '../../components/Msite/MsiteNewGoods/MsiteNewGoods.vue'
+  import MsiteBetterGoods from '../../components/Msite/MsiteBetterGoods/MsiteBetterGoods.vue'
+  import MsiteLimitTime from '../../components/Msite/MsiteLimitTime/MsiteLimitTime.vue'
+  import MsiteWelfare from '../../components/Msite/MsiteWelfare/MsiteWelfare.vue'
+  import MsiteSpecialSelected from '../../components/Msite/MsiteSpecialSelected/MsiteSpecialSelected.vue'
+  import MsiteMainList from '../../components/Msite/MsiteMainList/MsiteMainList.vue'
+  import MsiteFooter from '../../components/Msite/MsiteFooter/MsiteFooter.vue'
 
   export default {
     components:{
@@ -58,7 +58,7 @@
 <style scoped lang="less" rel="stylesheet/less">
 @rem:750/10rem;
 #msite{
-  height:3000px;
+  //height:3000px;
   width:750/@rem;
   margin-right:auto;
   margin-left: auto;

@@ -37,7 +37,7 @@
 <script>
   import {mapState} from 'vuex'
   import Swiper from 'swiper'
-  import 'swiper/dist/css/swiper.min.css'
+  //import 'swiper/dist/css/swiper.min.css'
   
   export default {
     mounted(){
@@ -70,7 +70,7 @@
 /*轮播图区*/
 .m_swiper_wrap{
   width:100%;
-  margin-top:2rem;
+  margin-top:130/@rem;
   //margin-bottom: .26667rem;
   .swiper-container{
     width:750/@rem;
