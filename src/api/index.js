@@ -19,8 +19,10 @@ export const reqSlideList=()=>ajax('/column');//slide
 export const reqRecommendList=()=>ajax('/recommend');//recommend
 export const reqTFList=()=>ajax('/tenfifteen');//tenfifteen
 export const reqZPList=()=>ajax('/zhenpin');//zhenpin
-export const reqYXList=()=>ajax('/yxLook');//zhenpin
-export const reqMoreList=()=>ajax('/findMore');//zhenpin
+export const reqYXList=()=>ajax('/yxLook');//yxLook
+export const reqMoreList=()=>ajax('/findMore');//findMore
+//sort
+export const reqSortList=()=>ajax('/categoryData');//findMore
 
 
 

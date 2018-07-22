@@ -13,7 +13,8 @@ import {RECEIVE_SWIPER_LIST,
   RECEIVE_TF_LIST,
   RECEIVE_ZP_LIST,
   RECEIVE_YX_TAGS,
-  RECEIVE_MORE_LIST
+  RECEIVE_MORE_LIST,
+  RECEIVE_SORT_LIST
 } from './mutation-types'
 
 export default {
@@ -64,5 +65,9 @@ export default {
   },
   [RECEIVE_MORE_LIST](state,{moreList}){
     state.moreList=moreList;
+  },
+  //sort
+  [RECEIVE_SORT_LIST](state,{sortList}){
+    state.sortList=sortList;
   }
 }

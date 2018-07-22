@@ -49,7 +49,7 @@
   width:750/@rem;
   //height:3000px;
   position: relative;
-  padding-bottom: 98/@rem;
+  margin-bottom: 98/@rem;
   .s_content{
     margin-top:88/@rem;
     .s_content_item{

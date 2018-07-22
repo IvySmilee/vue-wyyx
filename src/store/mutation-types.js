@@ -16,6 +16,9 @@ export const RECEIVE_ZP_LIST='receive_zp_list';//zp_list
 export const RECEIVE_YX_TAGS='receive_yx_tags';//yx_tags
 export const RECEIVE_MORE_LIST='receive_more_list';//more_list
 
+//sort  RECEIVE_SORT_LIST
+export const RECEIVE_SORT_LIST='receive_sort_list';//sort_list
+
 
 
 

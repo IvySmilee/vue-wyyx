@@ -8,7 +8,7 @@ const  Shiwu=()=>import('../pages/Shiwu/Shiwu.vue');
 const  Cart=()=>import('../pages/Cart/Cart.vue');
 const  Sort=()=>import('../pages/Sort/Sort.vue');
 const  Profile=()=>import('../pages/Profile/Profile.vue');
-
+const  SortDetail=()=>import('../components/Sort/SortDetail/SortDetail.vue');
 
 Vue.use(Router);
 
@@ -44,7 +44,13 @@ export default new Router({
       component: Sort,
       meta:{
         isShow:true
-      }
+      },
+      children:[
+        {
+          path: 'detail',
+          component: SortDetail,
+        }
+      ]
     },
     {
       path: '/profile',

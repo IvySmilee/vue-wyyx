@@ -15,5 +15,7 @@ export default {
   tfList:[],
   zpList:[],
   yxList:[],
-  moreList:[]
+  moreList:[],
+  //sort
+  sortList:[]
 }

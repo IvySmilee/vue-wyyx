@@ -12,7 +12,8 @@ import {reqSwiperList,
   reqTFList,
   reqZPList,
   reqYXList,
-  reqMoreList
+  reqMoreList,
+  reqSortList
 } from '../api'
 import {RECEIVE_SWIPER_LIST,
   RECEIVE_BRANS_SERVE,
@@ -28,7 +29,8 @@ import {RECEIVE_SWIPER_LIST,
   RECEIVE_TF_LIST,
   RECEIVE_ZP_LIST,
   RECEIVE_YX_TAGS,
-  RECEIVE_MORE_LIST
+  RECEIVE_MORE_LIST,
+  RECEIVE_SORT_LIST
 } from './mutation-types'
 
 
@@ -151,8 +153,17 @@ export default {
     const result=await reqMoreList();
     if(result.code===0){
       const moreList=result.data;
-      console.log(moreList);
+      //console.log(moreList);
       commit(RECEIVE_MORE_LIST,{moreList})
+    }
+  },
+  //sort
+  async getSortList({commit}){
+    const result=await reqSortList();
+    if(result.code===0){
+      const sortList=result.data;
+      console.log(sortList);
+      commit(RECEIVE_SORT_LIST,{sortList})
     }
   },
 }

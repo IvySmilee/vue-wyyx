@@ -25,5 +25,5 @@ Mock.mock('/zhenpin', {code:0, data: shiwuData.zhenpin});
 Mock.mock('/yxLook', {code:0, data: shiwuData.yxLook});
 Mock.mock('/findMore', {code:0, data: shiwuData.findMore});
 
-
+//sort
 Mock.mock('/categoryData', {code:0, data: categoryData});
