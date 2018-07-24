@@ -8,8 +8,8 @@
     </div>
     <div class="s-left">
       <ul class="sort-list">
-        <li class="list-item"
-        v-for="(obj,index) in sortList" :key="index">
+        <li class="list-item" :class="{active:index===clickIndex}"
+        v-for="(obj,index) in sortList" :key="index" @click="clickedIndex(index)">
           {{obj.name}}
         </li>
       </ul>
@@ -23,16 +23,21 @@
 
 <script>
   import BScroll from 'better-scroll'
+  import PubSub from 'pubsub-js'
   import {mapState} from 'vuex'
   import SortDetail from '../../components/Sort/SortDetail/SortDetail.vue'
 
   export default {
+    data(){
+     return {
+       clickIndex:0
+     }
+    },
     mounted(){
       this.$store.dispatch('getSortList');
-     
     },
     computed:{
-      ...mapState(['sortList'])
+      ...mapState(['sortList']),
     },
     watch:{
       sortList(){
@@ -41,7 +46,21 @@
             scrollY:true,
             click:true
           })
+        });
+        this.$nextTick(()=>{
+          new BScroll('.s-right',{
+            scrollY:true,
+            click:true,
+            probeType:2,
+            eventPassThough:true
+          })
         })
+      }
+    },
+    methods:{
+      clickedIndex(index){
+        this.clickIndex=index;
+        PubSub.publish('clickedIndex',index);
       }
     },
     components:{
@@ -57,7 +76,7 @@
 .sort{
   border-top:1px solid transparent;/*透明边框：解决父子外边距重合问题*/
   background-color: #ffffff;
-  //height:3000px;
+  height:100%;
   overflow: hidden;
   .s-header{
     height:88/@rem;
@@ -107,7 +126,7 @@
       .list-item{
         width:100%;
         height:62/@rem;
-        margin-top:40/@rem;
+        margin-top:25/@rem;
         //background-color: aquamarine;
         line-height: 62/@rem;
         text-align: center;
@@ -134,11 +153,12 @@
     }
   }
   .s-right{
-    float:right;
+    //float:right;
     width:588/@rem;
     height:1240/@rem;
     margin-top:88/@rem;
-    padding:30/@rem 30/@rem 21/@rem;
+    margin-bottom:200/@rem;
+    padding:0 30/@rem 100/@rem;
     background-color: #fff;
     overflow: hidden;
   }

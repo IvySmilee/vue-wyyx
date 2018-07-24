@@ -27,3 +27,5 @@ Mock.mock('/findMore', {code:0, data: shiwuData.findMore});
 
 //sort
 Mock.mock('/categoryData', {code:0, data: categoryData});
+//验证码
+Mock.mock('/captcha', {code:0, data: data.note});

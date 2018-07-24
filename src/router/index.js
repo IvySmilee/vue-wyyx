@@ -9,6 +9,8 @@ const  Cart=()=>import('../pages/Cart/Cart.vue');
 const  Sort=()=>import('../pages/Sort/Sort.vue');
 const  Profile=()=>import('../pages/Profile/Profile.vue');
 const  SortDetail=()=>import('../components/Sort/SortDetail/SortDetail.vue');
+const  Login=()=>import('../pages/Login/Login.vue');
+const  Personal=()=>import('../pages/Profile/Personal/Personal.vue');
 
 Vue.use(Router);
 
@@ -54,7 +56,20 @@ export default new Router({
     },
     {
       path: '/profile',
-      component: Profile
+      component: Profile,
+      children:[
+        {
+          path: '/profile/personal',
+          component: Personal,
+          meta:{
+            isShowProfile:true
+          },
+        }
+      ]
+    },
+    {
+      path: '/login',
+      component: Login
     },
     {
       path:'/', //默认跳转

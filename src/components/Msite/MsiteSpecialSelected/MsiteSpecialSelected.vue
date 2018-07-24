@@ -41,6 +41,7 @@
     mounted(){
       this.$store.dispatch('getSpecialGoods');
       new BScroll('.special_item',{
+        startX:0,
         scrollX:true,
         click:true, //默认禁止点击的
         probeType:2,//因为惯性滑动不会触发
@@ -58,6 +59,7 @@
 <style scoped lang="less" rel="stylesheet/less">
   @rem:750/10rem;
   .m_special_selected{
+    overflow: hidden;
     .items_head{
       height: 1.46667rem;
       font-size: .42667rem;
@@ -88,15 +90,17 @@
     }
     .special_item{
       width:100%;
-      height: 480/@rem;
+      //height: 480/@rem;
       /*background-color: #8fdbff;*/
       overflow: hidden;
-      position: relative;
-      padding:0 30/@rem 36/@rem  30/@rem ;
+      //position: relative;
+      display: flex;
+      margin:0 0 36/@rem  30/@rem ;
       .itemList{
-        position: absolute;
+        //position: absolute;
+        //float: left;
         height:414/@rem;
-        overflow: visible;
+        //overflow: hidden;
         display: flex;
         flex-flow: row nowrap;
         margin-left: 30/@rem;
@@ -104,9 +108,11 @@
           width:575/@rem;
           height:auto;
           position: relative;
-          background-color: #fff9fc;
           //background-color: coral;
           margin-right: 15px;
+          &:last-child{
+            overflow: hidden;
+          }
           .item_img{
             display: block;
             img{

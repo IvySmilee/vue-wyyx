@@ -1,6 +1,6 @@
 <template>
 	<div class="shiwu">
-    <ShiwuHeader/>
+    <Header name="top"/>
     <div class="s_content">
       <ShiwuBanner/>
       <ShiwuSlide class="s_content_item"/>
@@ -10,11 +10,15 @@
       <ShiwuLook class="s_content_item"/>
       <ShiwuMore/>
     </div>
+    <!--锚点-->
+    <a class="go-top" href="#top">
+      <i></i>
+    </a>
 	</div>
 </template>
 
 <script>
-  import ShiwuHeader from '../../components/Shiwu/ShiwuHeader/ShiwuHeader.vue'
+  import Header from '../../components/Header/Header.vue'
   import ShiwuBanner from '../../components/Shiwu/ShiwuBanner/ShiwuBanner.vue'
   import ShiwuSlide from '../../components/Shiwu/ShiwuSlide/ShiwuSlide.vue'
   import ShiwuRecommend from '../../components/Shiwu/ShiwuRecommend/ShiwuRecommend.vue'
@@ -29,7 +33,7 @@
       return {}
     },
     components:{
-      ShiwuHeader,
+      Header,
       ShiwuBanner,
       ShiwuSlide,
       ShiwuRecommend,
@@ -56,6 +60,22 @@
       width:100%;
       margin-bottom: .26667rem;
       background-color: #fff;
+    }
+  }
+  .go-top{
+    display: block;
+    width:82/@rem;
+    height:82/@rem;
+    position: fixed;
+    right:23/@rem;
+    bottom:120/@rem;
+    i{
+      height:100%;
+      display: block;
+      background-image: url("http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/goToTop-7a19216f77.png");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
   }
 }

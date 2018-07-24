@@ -23,6 +23,6 @@ export const reqYXList=()=>ajax('/yxLook');//yxLook
 export const reqMoreList=()=>ajax('/findMore');//findMore
 //sort
 export const reqSortList=()=>ajax('/categoryData');//findMore
-
-
+//验证码
+export const reqCaptcha=()=>ajax('/captcha');//验证码
 

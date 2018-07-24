@@ -1,35 +1,17 @@
 <template>
-	<div class="sort-detail">
+	<div class="sort-detail" v-if="sortList.length>0">
     <div class="detail-post">
-      <img src="" alt="">
+      <img :src="sortList[clickIndex].bannerUrl" alt="banner">
     </div>
     <div class="detail-content">
       <div class="detail-title">
-        <span>推荐专区分类</span>
+        <span>{{sortList[clickIndex].name}}分类</span>
       </div>
       <ul class="detail-list">
-        <li class="list-item">
-          <a class="item-link" href="">
-            <img class="item-img" src="http://yanxuan.nosdn.127.net/9b641e20dd9482da1428e37fb9a1a4ed.png?imageView&quality=85&thumbnail=144x144" alt="">
-            <div class="item-info">服装夏季专享</div>
-          </a>
-        </li>
-        <li class="list-item">
-          <a class="item-link" href="">
-            <img class="item-img" src="http://yanxuan.nosdn.127.net/9b641e20dd9482da1428e37fb9a1a4ed.png?imageView&quality=85&thumbnail=144x144" alt="">
-            <div class="item-info">服装夏季专享</div>
-          </a>
-        </li>
-        <li class="list-item">
-          <a class="item-link" href="">
-            <img class="item-img" src="http://yanxuan.nosdn.127.net/9b641e20dd9482da1428e37fb9a1a4ed.png?imageView&quality=85&thumbnail=144x144" alt="">
-            <div class="item-info">服装夏季专享</div>
-          </a>
-        </li>
-        <li class="list-item">
-          <a class="item-link" href="">
-            <img class="item-img" src="http://yanxuan.nosdn.127.net/9b641e20dd9482da1428e37fb9a1a4ed.png?imageView&quality=85&thumbnail=144x144" alt="">
-            <div class="item-info">服装夏季专享</div>
+        <li class="list-item" v-for="(obj,index) in sortList[clickIndex].subCateList" :key="index">
+          <a class="item-link">
+            <img class="item-img" :src="obj.wapBannerUrl" alt="">
+            <div class="item-info">{{obj.name}}</div>
           </a>
         </li>
       </ul>
@@ -38,8 +20,32 @@
 </template>
 
 <script>
-  export default {
+  import PubSub from 'pubsub-js'
+  import BScroll from 'better-scroll'
+  import {mapState} from 'vuex'
   
+  export default {
+    data(){
+      return {
+        clickIndex:0
+      }
+    },
+    mounted(){
+      PubSub.subscribe('clickedIndex',(msg,index)=>{
+        this.setClickIndex(index);
+      });
+      
+    },
+    computed:{
+      ...mapState(['sortList']),
+    },
+    
+    methods:{
+      setClickIndex(index){
+        this.clickIndex=index;
+        console.log(this.clickIndex);
+      }
+    }
   }
 </script>
 
@@ -49,7 +55,10 @@
 @rem:750/10rem;
 .sort-detail{
   width:100%;
+  //height:100%;
   //background-color: aquamarine;
+  padding-bottom:1rem;
+  padding-top:30/@rem;
   .detail-post{
     width:100%;
     height:192/@rem;

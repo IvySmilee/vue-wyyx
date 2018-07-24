@@ -3,7 +3,7 @@
     <!--搜索区-->
     <MsiteHeader class="msite_header_item"/>
     <!--轮播图区-->
-    <MsiteSwiper class="msite_item"/>
+    <MsiteSwiper class="msite_item" name="top"/>
     <!--品牌直供区-->
     <MsiteBrandServe class="msite_item"/>
     <!--新品首发区-->
@@ -20,6 +20,10 @@
     <MsiteMainList class="msite_item"/>
     <!--底部-->
     <MsiteFooter/>
+    <!--锚点-->
+    <a class="go-top" href="#top">
+      <i></i>
+    </a>
 	</div>
 </template>
 
@@ -62,6 +66,7 @@
   width:750/@rem;
   margin-right:auto;
   margin-left: auto;
+  /*position: relative;*/
   .msite_header_item{
     height:148/@rem;
   }
@@ -69,6 +74,22 @@
     width:100%;
     margin-bottom: .26667rem;
     background-color: #fff;
+  }
+  .go-top{
+    display: block;
+    width:82/@rem;
+    height:82/@rem;
+    position: fixed;
+    right:23/@rem;
+    bottom:120/@rem;
+    i{
+      height:100%;
+      display: block;
+      background-image: url("http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/goToTop-7a19216f77.png");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
   }
 }
 </style>

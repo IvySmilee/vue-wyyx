@@ -24,7 +24,7 @@
 <style scoped lang="less" rel="stylesheet/less">
 @rem:750/10rem;
 .s_header{
-  width:750/10rem;
+  width:750/10@rem;
   height:88/@rem;
   position: fixed;
   top:0;
