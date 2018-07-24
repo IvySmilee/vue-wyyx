@@ -120,7 +120,6 @@
           this.$router.replace('/profile/personal');
           this.$route.meta.isShowProfile=!this.$route.meta.isShowProfile;
         }
-        
       }
     },
     components:{
