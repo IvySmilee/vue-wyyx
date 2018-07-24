@@ -24,7 +24,7 @@
         <div class="cart_txt">去添加点什么吧</div>
       </div>
       <div class="c_login">
-        <a class="log_btn" href="">登录</a>
+        <router-link class="log_btn" to="/login">登录</router-link>
       </div>
     </div>
 	</div>

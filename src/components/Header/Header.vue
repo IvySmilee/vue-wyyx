@@ -4,7 +4,7 @@
       <router-link class="home_link icon" to="/msite"></router-link>
       <router-link class="logo_link  icon" to="/msite"></router-link>
       <div class="right">
-        <router-link class="search_link i" to="javascript:;"></router-link>
+        <router-link class="search_link i" to="/msite"></router-link>
         <router-link class="cart_link i" to="/cart"></router-link>
       </div>
     </div>

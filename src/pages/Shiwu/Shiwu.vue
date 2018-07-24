@@ -1,6 +1,6 @@
 <template>
 	<div class="shiwu">
-    <Header name="top"/>
+    <Header  name="top"/>
     <div class="s_content">
       <ShiwuBanner/>
       <ShiwuSlide class="s_content_item"/>

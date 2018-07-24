@@ -7,13 +7,13 @@
       </a>
     </header>
     <div class="brand_container">
-      <ul class="brand_list">
+      <ul class="brand_list" v-lazy>
         <li class="brand_item" v-for="(obj, index) in brandServeList" :key="index">
           <div class="item_info">
             <p class="item_title">{{obj.name}}</p>
             <span class="item_price"><span>{{obj.floorPrice}}</span>元起</span>
           </div>
-          <img class="item_img" :src="obj.picUrl"/>
+          <img class="item_img" v-lazy="obj.picUrl"/>
         </li>
       </ul>
     </div>

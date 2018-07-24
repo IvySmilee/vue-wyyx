@@ -2,7 +2,7 @@
   <div class="m_head_wrap">
     <!--搜索区-->
     <div class="head_top">
-      <a class="logo" href="javascripe:;"></a>
+      <a class="logo" href="/msite"></a>
       <div class="search">
         <i></i>
         <span>搜索商品, 共10726款好物</span>
@@ -12,38 +12,18 @@
     <!--头部导航区-->
     <div class="head_nav">
       <ul>
-        <li class="first">
-          <span class="active">推荐</span>
+        <li class="first" @click="change()">
+          <router-link to="/msite/main">
+            <span :class="{active:isShow}" >推荐</span>
+          </router-link>
         </li>
-        <li v-for="(tag,index) in navTagList" :key="index">
-          <span>{{tag.name}}</span>
+        <li v-for="(tag,index) in navTagList" :key="index" @click="headIndex(index)">
+          <router-link class="link" :to="`/msite/detail/${index}`">
+            <span :class="{active:showIndex(index)}">{{tag.name}}</span>
+          </router-link>
         </li>
-       
+  
         <!--<li>
-          <span>鞋包配饰</span>
-        </li>
-        <li>
-          <span>服装</span>
-        </li>
-        <li>
-          <span>电器</span>
-        </li>
-        <li>
-          <span>洗护</span>
-        </li>
-        <li>
-          <span>饮食</span>
-        </li>
-        <li>
-          <span>餐厨</span>
-        </li>
-        <li>
-          <span>婴童</span>
-        </li>
-        <li>
-          <span>文体</span>
-        </li>
-        <li>
           <span>特色区</span>
         </li>-->
       </ul>
@@ -54,16 +34,44 @@
 <script>
   import {mapState} from 'vuex'
   import BScroll from 'better-scroll'
+  
   export default {
-    mounted(){
-      this.$store.dispatch('getNavTags');
-      new BScroll(".head_nav",{
-        scrollX:true,
-        click:true
-      })
+    data(){
+      return {
+        index:-1,
+        isShow:true,
+      }
     },
     computed:{
       ...mapState(['navTagList'])
+    },
+    mounted(){
+      this.$store.dispatch('getNavTags');
+      
+    },
+    methods:{
+      headIndex(index){
+        this.index=index;
+        this.isShow=false;
+      },
+      showIndex(index){
+        return index===this.index;
+      },
+      change(){
+        this.isShow=true;
+        this.index=-1;
+      }
+    },
+    watch:{
+      navTagList(){
+        this.$nextTick(()=>{
+          new BScroll(".head_nav",{
+            scrollX:true,
+            click:true,
+            probeType:2
+          })
+        })
+      }
     }
   }
 </script>
@@ -141,6 +149,8 @@
       li{
         /*<!--width:143/@rem;-->*/
         /*height:100%;*/
+        width:44*2/@rem;
+        height:30*2/@rem;
         flex-shrink: 0;
         position: relative;
         margin-left: 0.64rem;

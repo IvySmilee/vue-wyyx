@@ -11,6 +11,8 @@ const  Profile=()=>import('../pages/Profile/Profile.vue');
 const  SortDetail=()=>import('../components/Sort/SortDetail/SortDetail.vue');
 const  Login=()=>import('../pages/Login/Login.vue');
 const  Personal=()=>import('../pages/Profile/Personal/Personal.vue');
+const  MsiteMain=()=>import('../pages/Msite/MsiteMain/MsiteMain.vue');
+const  MsiteDetai=()=>import('../pages/Msite/MsiteDetai/MsiteDetai.vue');
 
 Vue.use(Router);
 
@@ -23,6 +25,26 @@ export default new Router({
     {
       path: '/msite',
       component: Msite,
+      children:[
+        {
+          path: '/msite/main',
+          component: MsiteMain,
+          meta:{//配置：用来控制footerguide什么时候显示
+            isShow:true
+          }
+        },
+        {
+          path: '/msite/detail/:id',
+          component: MsiteDetai,
+          meta:{
+            isShow:true
+          }
+        },
+        {
+          path:'',
+          redirect:'/msite/main'
+        }
+      ],
       meta:{//配置：用来控制footerguide什么时候显示
         isShow:true
       }
