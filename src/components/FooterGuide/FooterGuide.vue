@@ -1,6 +1,7 @@
 <template>
   <footer class="footer_nav">
-    <span class="item" :class="{active:'/msite/main'===$route.path}" @click="goTo('/msite/main')">
+    <span class="item" :class="{active:$route.path==='/msite/main' || $route.path===`/msite/detail/${$route.params.id}`}"
+          @click="goTo('/msite/main')">
       <i class="msite_icon on"></i>
       <span class="txt">首页</span>
     </span>
