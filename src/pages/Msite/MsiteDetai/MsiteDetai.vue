@@ -51,7 +51,7 @@
       this.index =this.$route.params.id;
     },
     watch:{
-      $route(value){
+      $route(value){ //监视当前路由组件路径
         this.index=this.$route.params.id;
       }
     }
